@@ -47,12 +47,12 @@ function fetchPhotos() {
 
     if (photos.length < 12 && photos.length > 0) {
       loadMoreBtn.showEnd();
+      appendPhotosMarkup(photos);
       return;
     }
 
     appendPhotosMarkup(photos);
     loadMoreBtn.enable();
-    return;
   });
 }
 
@@ -79,11 +79,10 @@ const onEntry = entries => {
       photoApiService.fetchPhotos().then(photos => {
         if (photos.length < 12 && photos.length >= 0) {
           loadMoreBtn.showEnd();
-          return;
+          appendPhotosMarkup(photos);
         }
 
         appendPhotosMarkup(photos);
-
         return;
       });
     }
