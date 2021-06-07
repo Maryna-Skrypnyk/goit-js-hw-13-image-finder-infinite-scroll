@@ -77,9 +77,10 @@ const onEntry = entries => {
     loadMoreBtn.hide();
     if (entry.isIntersecting && photoApiService.query !== '') {
       photoApiService.fetchPhotos().then(photos => {
-        if (photos.length < 12 && photos.length >= 0) {
-          appendPhotosMarkup(photos);
+        if (photos.length < 12 && photos.length > 0) {
           loadMoreBtn.showEnd();
+          appendPhotosMarkup(photos);
+          return;
         }
         appendPhotosMarkup(photos);
         return;
